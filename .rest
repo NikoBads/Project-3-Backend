@@ -1,0 +1,22 @@
+GET http://localhost:5005/api/login
+
+###
+POST http://localhost:5005/api/signup
+Content-Type: application/json
+
+{
+    "email":"Leon@gmail.com",
+    "password":"123",
+    "name": "Leon",
+}
+
+
+
+###
+GET  http://localhost:5005/api/verify
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjFlODczNDBhODg4MTQyNTQ1MTI3M2IiLCJlbWFpbCI6IkxpdHRsZUJlbGxhQGdtYWlsLmNvbSIsIm5hbWUiOiJCZWxsYSIsImlhdCI6MTY0NjIzODYxMywiZXhwIjoxNjQ2MjYwMjEzfQ.41wB2_WkI-lj7yUNFdnoSyFWUk6olCbW5r8QlIJ4fjM
+
+
+
+###
+GET http://localhost:5005/api/claims
