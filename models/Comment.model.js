@@ -8,9 +8,9 @@ const commentSchema = new Schema(
 
     creator: { type: Schema.Types.ObjectId, ref: "User", required: true },
 
-    upVoted: { type: [], required: true },
+    upVoted: [{ type: Schema.Types.ObjectId, ref: "User", required: true }],
 
-    downVoted: { type: [], required: true },
+    downVoted: [{ type: Schema.Types.ObjectId, ref: "User", required: true }],
   },
   {
     timestamps: true,
