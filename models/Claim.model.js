@@ -14,7 +14,9 @@ const claimSchema = new Schema(
 
     downVoted: [{ type: Schema.Types.ObjectId, ref: "User", required: true }],
 
-    verified: { type: String, enum: ["false", "true"] },
+    textualRating: { type: String },
+
+    url: { type: String },
   },
   {
     timestamps: true,

@@ -53,10 +53,18 @@ router.get("/search", (req, res) => {
 /*
 DELETE A COMMENT
 */
-router.delete("/delete/comment/:commentId", (req, res) => {
-  Comment.findByIdAndRemove(req.params.commentId).then((results) => {
-    res.json(results);
-  });
+
+router.delete("/delete/comment/:commentId", isAuthenticated, (req, res) => {
+  Comment.findOneAndRemove({
+    _id: req.params.commentId,
+    creator: req.payload._id,
+  })
+    .then((results) => {
+      res.json(results);
+    })
+    .catch((err) => {
+      console.log("somethingweent wrong, ", err.message);
+    });
 });
 
 /*
@@ -152,11 +160,21 @@ router.post("/upvote/comment/:commentId", isAuthenticated, (req, res) => {
 });
 
 /*
+UPDATE CLAIM 
+*/
+router.post("/update/claim/:claimId", (req, res) => {
+  Claim.findByIdAndUpdate(req.params.claimId, req.body).then(() => {});
+});
+
+/*
 DELETE SINGLE CLAIM BY ID ROUTE
 */
 
 router.post("/delete/claim/:claimId/", (req, res) => {
-  Claim.findByIdAndDelete(req.params.claimId).then((results) => {
+  Claim.findOneAndDelete({
+    _id: req.params.claimId,
+    creator: req.payload._id,
+  }).then((results) => {
     res.json(results);
   });
 });
