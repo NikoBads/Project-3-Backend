@@ -15,14 +15,14 @@ const cors = require("cors");
 
 // ℹ️ Session middleware for authentication
 // https://www.npmjs.com/package/express-session
-const session = require("express-session");
+// const session = require("express-session");
 
 // ℹ️ MongoStore in order to save the user session in the database
 // https://www.npmjs.com/package/connect-mongo
-const MongoStore = require("connect-mongo");
+// const MongoStore = require("connect-mongo");
 
 // Connects the mongo uri to maintain the same naming structure
-const MONGO_URI = require("../utils/consts");
+// const MONGO_URI = require("../utils/consts");
 
 // Middleware configuration
 module.exports = (app) => {
@@ -47,24 +47,24 @@ module.exports = (app) => {
   app.use(cookieParser());
 
   // ℹ️ Middleware that adds a "req.session" information and later to check that you are who you say you are 😅
-  app.use(
-    session({
-      secret: process.env.SESSION_SECRET || "super hyper secret key",
-      resave: false,
-      saveUninitialized: false,
-      store: MongoStore.create({
-        mongoUrl: MONGO_URI,
-      }),
-      cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 365,
-        sameSite: "none",
-        secure: process.env.NODE_ENV === "production",
-      },
-    })
-  );
+  // app.use(
+  //   session({
+  //     secret: process.env.SESSION_SECRET || "super hyper secret key",
+  //     resave: false,
+  //     saveUninitialized: false,
+  //     store: MongoStore.create({
+  //       mongoUrl: MONGO_URI,
+  //     }),
+  //     cookie: {
+  //       maxAge: 1000 * 60 * 60 * 24 * 365,
+  //       sameSite: "none",
+  //       secure: process.env.NODE_ENV === "production",
+  //     },
+  //   })
+  // );
 
-  app.use((req, res, next) => {
-    req.user = req.session.user || null;
-    next();
-  });
+  // app.use((req, res, next) => {
+  //   req.user = req.session.user || null;
+  //   next();
+  // });
 };

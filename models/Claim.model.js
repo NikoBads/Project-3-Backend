@@ -10,9 +10,9 @@ const claimSchema = new Schema(
 
     comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
 
-    upVoted: [{ type: Schema.Types.ObjectId, ref: "User", required: true }],
+    upVoted: [{ type: Schema.Types.ObjectId, ref: "User" }],
 
-    downVoted: [{ type: Schema.Types.ObjectId, ref: "User", required: true }],
+    downVoted: [{ type: Schema.Types.ObjectId, ref: "User" }],
 
     textualRating: { type: String },
 

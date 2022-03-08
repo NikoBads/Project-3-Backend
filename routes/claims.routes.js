@@ -26,9 +26,12 @@ router.get("/", (req, res) => {
 CREATE NEW CLAIM ROUTE
 */
 router.post("/create", isAuthenticated, (req, res) => {
-  Claim.create({ ...req.body, creator: req.payload._id }).then((results) => {
-    res.json(results);
-  });
+  console.log(req.body.title);
+  Claim.create({ title: req.body.title, creator: req.payload._id }).then(
+    (results) => {
+      res.json(results);
+    }
+  );
 });
 
 /*
